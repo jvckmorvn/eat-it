@@ -14,7 +14,7 @@ export default function CategoryGridTile({title, colour, onPress}) {
         </View>
       </Pressable>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
