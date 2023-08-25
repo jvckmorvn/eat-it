@@ -1,17 +1,22 @@
 import { View, Pressable, Text, Image, StyleSheet, Platform } from 'react-native';
 
-export default function MealItem({title, imageUrl, duration, complexity, affordability}) {
+export default function MealItem({title, imageUrl, duration, complexity, affordability, onPress}) {
   return (
     <View style={styles.mealItem}>
-      <Pressable>
-        <View>
-          <Image source={{uri: imageUrl}} style={styles.image}/>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-        <View style={styles.detailsContainer}>
-          <Text style={styles.detailItem}>{duration}"</Text>
-          <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-          <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
+      <Pressable
+        style={({pressed}) => pressed ? styles.buttonPressed : null} 
+        onPress={onPress}
+      >
+        <View style={styles.innerContainer}>
+          <View>
+            <Image source={{uri: imageUrl}} style={styles.image}/>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.detailItem}>{duration}"</Text>
+            <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
+            <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
+          </View>
         </View>
       </Pressable>
     </View>
@@ -48,5 +53,12 @@ const styles = StyleSheet.create({
   detailItem: {
     marginHorizontal: 6,
     fontSize: 12
+  },
+  innerContainer: {
+    borderRadius: 8,
+    overflow: 'hidden'
+  },
+  buttonPressed: {
+    opacity: 0.8
   }
 });
