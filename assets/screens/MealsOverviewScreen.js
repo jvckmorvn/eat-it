@@ -22,19 +22,13 @@ export default function MealsOverviewScreen({route, navigation}) {
   function renderMeal(itemData) {
     const item = itemData.item;
 
-    function pressHandler() {
-      navigation.navigate('MealDetails', {
-        categoryId: item.id
-      });
-    }
-
     const mealItemProps = {
+      id: item.id,
       title: item.title,
       imageUrl: item.imageUrl,
       duration: item.duration,
       complexity: item.complexity,
       affordability: item.affordability,
-      onPress: pressHandler
     };
 
     return <MealItem {...mealItemProps}/>;
