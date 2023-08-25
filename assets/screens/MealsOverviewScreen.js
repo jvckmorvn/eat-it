@@ -6,7 +6,6 @@ import { MEALS, CATEGORIES } from '../data/dummy-data';
 
 export default function MealsOverviewScreen({route, navigation}) {
   const categoryId = route.params.categoryId;
-
   const displayedMeals = MEALS.filter((meal) => {
     return meal.categoryIds.indexOf(categoryId) >= 0
   });
@@ -41,7 +40,6 @@ export default function MealsOverviewScreen({route, navigation}) {
         keyExtractor={(item) => item.id}
         renderItem={renderMeal}
       />
-      <Text>Meal Overview Screen - {categoryId}</Text>
     </View>
   );
 }

@@ -5,6 +5,11 @@ import MealDetails from '../components/MealDetails';
 
 export default function MealItem({id, title, imageUrl, duration, complexity, affordability}) {
   const navigation = useNavigation();
+  const mealDetailsProps = {
+    duration,
+    complexity,
+    affordability
+  };
 
   function pressHandler() {
     navigation.navigate('MealDetails', {
@@ -23,7 +28,7 @@ export default function MealItem({id, title, imageUrl, duration, complexity, aff
             <Image source={{uri: imageUrl}} style={styles.image}/>
             <Text style={styles.title}>{title}</Text>
           </View>
-          <MealDetails/>
+          <MealDetails {...mealDetailsProps}/>
         </View>
       </Pressable>
     </View>
@@ -50,16 +55,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     margin: 8
-  },
-  detailsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
-  },
-  detailItem: {
-    marginHorizontal: 6,
-    fontSize: 12
   },
   innerContainer: {
     borderRadius: 8,

@@ -10,10 +10,6 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-  function setTitle(title) {
-    return { title };
-  }
-
   return (
     <>
       <StatusBar style='light'/>

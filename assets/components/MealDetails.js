@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function MealDetails() {
+export default function MealDetails({duration, complexity, affordability}) {
   return (
     <View style={styles.detailsContainer}>
       <Text style={styles.detailItem}>{duration}"</Text>
@@ -9,3 +9,16 @@ export default function MealDetails() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  detailsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8
+  },
+  detailItem: {
+    marginHorizontal: 6,
+    fontSize: 12
+  },
+});
