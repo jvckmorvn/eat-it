@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12, 
   },
   itemText: {
-    // fontWeight:,
-    // fontSize:,
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: 4
   }
 })

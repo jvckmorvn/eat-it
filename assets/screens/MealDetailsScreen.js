@@ -28,7 +28,7 @@ export default function MealDetailsScreen({route, navigation}) {
           <IconButton
             onPress={iconButtonPressHandler}
             icon={isButtonPressed ? 'heart' : 'heart-outline'}
-            colour="white"
+            colour='white'
           />
         )
       }
