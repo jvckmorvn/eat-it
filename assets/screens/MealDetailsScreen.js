@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
 
 import MealDetails from '../components/MealDetails';
@@ -6,6 +6,7 @@ import Subtitle from '../components/MealDetails/Subtitle';
 import List from '../components/MealDetails/List';
 import IconButton from '../components/IconButton';
 import { MEALS } from '../data/dummy-data';
+import { FavouritesContext } from '../store/context/favourites-context';
 
 export default function MealDetailsScreen({route, navigation}) {
   const mealId = route.params.mealId;
@@ -15,10 +16,17 @@ export default function MealDetailsScreen({route, navigation}) {
     complexity: meal.complexity,
     affordability: meal.affordability
   };
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
+
+  const favouriteMealsCtx = useContext(FavouritesContext);
+
+  const mealIsFavourite = favouriteMealsCtx.ids.includes(mealId);
 
   function iconButtonPressHandler() {
-    setIsButtonPressed((prevIsPressed) => !prevIsPressed);
+    if (mealIsFavourite) {
+      favouriteMealsCtx.removeFavourite(mealId);
+    } else {
+      favouriteMealsCtx.addFavourite(mealId);
+    }
   }
 
   useLayoutEffect(() => {
@@ -28,7 +36,7 @@ export default function MealDetailsScreen({route, navigation}) {
         return (
           <IconButton
             onPress={iconButtonPressHandler}
-            icon={isButtonPressed ? 'heart' : 'heart-outline'}
+            icon={mealIsFavourite ? 'heart' : 'heart-outline'}
             colour='white'
           />
         )

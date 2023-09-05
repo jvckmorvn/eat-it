@@ -8,6 +8,7 @@ import CategoriesScreen from './assets/screens/CategoriesScreen';
 import MealsOverviewScreen from './assets/screens/MealsOverviewScreen';
 import MealDetailsScreen from './assets/screens/MealDetailsScreen';
 import FavouritesScreen from './assets/screens/FavouritesScreen';
+import FavouritesContextProvider from './assets/store/context/favourites-context';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,35 +54,37 @@ export default function App() {
   return (
     <>
       <StatusBar style='light'/>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#920'
-            },
-            headerTintColor: 'white',
-            contentStyle: {
-              backgroundColor: '#9996'
-            }
-          }}
-        >
-          <Stack.Screen
-            name='Drawer'
-            component={DrawerNavigator}
-            options={{
-              headerShown: false
+      <FavouritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#920'
+              },
+              headerTintColor: 'white',
+              contentStyle: {
+                backgroundColor: '#9996'
+              }
             }}
-          />
-          <Stack.Screen
-            name='MealsOverview'
-            component={MealsOverviewScreen}
-          />
-          <Stack.Screen
-            name='MealDetails'
-            component={MealDetailsScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name='Drawer'
+              component={DrawerNavigator}
+              options={{
+                headerShown: false
+              }}
+            />
+            <Stack.Screen
+              name='MealsOverview'
+              component={MealsOverviewScreen}
+            />
+            <Stack.Screen
+              name='MealDetails'
+              component={MealDetailsScreen}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavouritesContextProvider>
     </>
   );
 }
