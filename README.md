@@ -1,2 +1,2 @@
-# meals-app
-Meals catalogue built using React Native
+# eat-it
+Food browser app built using React Native
