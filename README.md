@@ -1,2 +1,2 @@
-# eat-it
-Food browser app built using React Native
+# munchies
+Food delivery app built using React Native
